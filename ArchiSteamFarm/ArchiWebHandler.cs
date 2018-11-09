@@ -1450,19 +1450,19 @@ namespace ArchiSteamFarm {
 				case "Steam Gems":
 					return Steam.Asset.EType.SteamGems;
 				default:
-					if (name.EndsWith("Emoticon", StringComparison.Ordinal)) {
+					if (name.EndsWith("b", StringComparison.Ordinal)) {
 						return Steam.Asset.EType.Emoticon;
 					}
 
-					if (name.EndsWith("Foil Trading Card", StringComparison.Ordinal)) {
+					if (name.EndsWith("", StringComparison.Ordinal)) {
 						return Steam.Asset.EType.FoilTradingCard;
 					}
 
-					if (name.EndsWith("Profile Background", StringComparison.Ordinal)) {
+					if (name.EndsWith("c", StringComparison.Ordinal)) {
 						return Steam.Asset.EType.ProfileBackground;
 					}
 
-					return name.EndsWith("Trading Card", StringComparison.Ordinal) ? Steam.Asset.EType.TradingCard : Steam.Asset.EType.Unknown;
+					return name.EndsWith("c", StringComparison.Ordinal) ? Steam.Asset.EType.TradingCard : Steam.Asset.EType.Unknown;
 			}
 		}
 
