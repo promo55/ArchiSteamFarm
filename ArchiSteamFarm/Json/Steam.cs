@@ -32,8 +32,8 @@ namespace ArchiSteamFarm.Json {
 	internal static class Steam {
 		// REF: https://developer.valvesoftware.com/wiki/Steam_Web_API/IEconService#CEcon_Asset
 		internal sealed class Asset {
-			internal const ushort SteamAppID = 753;
-			internal const byte SteamCommunityContextID = 6;
+			internal const uint SteamAppID = 232090;
+			internal const byte SteamCommunityContextID = 2;
 
 			internal uint Amount { get; set; }
 
