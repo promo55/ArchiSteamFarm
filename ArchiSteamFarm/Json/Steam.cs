@@ -34,6 +34,7 @@ namespace ArchiSteamFarm.Json {
 		internal sealed class Asset {
 			internal const uint SteamAppID = 232090;
 			internal const byte SteamCommunityContextID = 2;
+			internal const uint SteamAppID2 = 304930;
 
 			internal uint Amount { get; set; }
 
@@ -464,6 +465,7 @@ namespace ArchiSteamFarm.Json {
 				}
 
 				return ItemsToGive.All(item => (item.AppID == Asset.SteamAppID) && (item.ContextID == Asset.SteamCommunityContextID) && acceptedTypes.Contains(item.Type));
+					ItemsToGive.All(item => (item.AppID == Asset.SteamAppID2) && (item.ContextID == Asset.SteamCommunityContextID) && acceptedTypes.Contains(item.Type));
 			}
 
 			[SuppressMessage("ReSharper", "UnusedMember.Global")]
