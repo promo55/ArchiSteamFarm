@@ -40,6 +40,7 @@ namespace ArchiSteamFarm.Json {
 
 			[JsonProperty(PropertyName = "appid", Required = Required.DisallowNull)]
 			internal uint AppID { get; private set; }
+			internal uint AppID2 { get; private set; }
 
 			internal ulong AssetID { get; private set; }
 			internal ulong ClassID { get; private set; }
@@ -129,7 +130,7 @@ namespace ArchiSteamFarm.Json {
 			}
 
 			// Constructed from trades being received
-			internal Asset(uint appID, ulong contextID, ulong classID, uint amount, uint realAppID, EType type = EType.Unknown) {
+			internal Asset(uint appID, uint appID2 ,ulong contextID, ulong classID, uint amount, uint realAppID, EType type = EType.Unknown) {
 				if ((appID == 0) || (contextID == 0) || (classID == 0) || (amount == 0) || (realAppID == 0)) {
 					throw new ArgumentNullException(nameof(classID) + " || " + nameof(contextID) + " || " + nameof(classID) + " || " + nameof(amount) + " || " + nameof(realAppID));
 				}
@@ -318,7 +319,8 @@ namespace ArchiSteamFarm.Json {
 			internal sealed class Description {
 				[JsonProperty(PropertyName = "appid", Required = Required.Always)]
 				internal readonly uint AppID;
-
+			internal readonly uint AppID2;//
+				
 				[JsonProperty(PropertyName = "market_hash_name", Required = Required.Always)]
 				internal readonly string MarketHashName;
 
