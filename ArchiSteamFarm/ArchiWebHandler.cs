@@ -1588,11 +1588,7 @@ namespace ArchiSteamFarm {
 					return false;
 				}
 				
-				if (appID2 == 0) {
-					ASF.ArchiLogger.LogNullError(nameof(appID2));
-					return false;
-				}
-				
+			
 				
 
 				ulong contextID = item["contextid"].AsUnsignedLong();
@@ -1621,20 +1617,13 @@ namespace ArchiSteamFarm {
 					type = description.Type;
 				}
 
-				uint realAppID2 = appID2;
-				Steam.Asset.EType type = Steam.Asset.EType.Unknown;
-
-				if (descriptions.TryGetValue(classID, out (uint AppID2, Steam.Asset.EType Type) description)) {
-					realAppID = description.AppID2;
-					type = description.Type;
-				}
-
 				
 				
 				
 				
 				
-				Steam.Asset steamAsset = new Steam.Asset(appID, appID2, contextID, classID, amount, realAppID, realAppID2, type);
+				
+				Steam.Asset steamAsset = new Steam.Asset(appID,  contextID, classID, amount, realAppID, type);
 				output.Add(steamAsset);
 			}
 
