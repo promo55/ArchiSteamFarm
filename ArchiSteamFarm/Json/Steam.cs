@@ -46,6 +46,7 @@ namespace ArchiSteamFarm.Json {
 			internal ulong ClassID { get; private set; }
 			internal ulong ContextID { get; private set; }
 			internal uint RealAppID { get; set; }
+			internal uint RealAppID2 { get; set; }
 			internal EType Type { get; set; }
 
 			[JsonProperty(PropertyName = "amount", Required = Required.Always)]
@@ -130,16 +131,18 @@ namespace ArchiSteamFarm.Json {
 			}
 
 			// Constructed from trades being received
-			internal Asset(uint appID, uint appID2 ,ulong contextID, ulong classID, uint amount, uint realAppID, EType type = EType.Unknown) {
-				if ((appID == 0) || (contextID == 0) || (classID == 0) || (amount == 0) || (realAppID == 0)) {
-					throw new ArgumentNullException(nameof(classID) + " || " + nameof(contextID) + " || " + nameof(classID) + " || " + nameof(amount) + " || " + nameof(realAppID));
+			internal Asset(uint appID, uint appID2 ,ulong contextID, ulong classID, uint amount, uint realAppID, uint realAppID2, EType type = EType.Unknown) {
+				if ((appID == 0) || (appID2 == 0) || (contextID == 0) || (classID == 0) || (amount == 0) || (realAppID == 0) || (realAppID2 == 0)) {
+					throw new ArgumentNullException(nameof(classID) + " || " + nameof(contextID) + " || " + nameof(classID) + " || " + nameof(amount) + " || " + nameof(realAppID)+ " || " + nameof(realAppID2));
 				}
 
 				AppID = appID;
+				AppID2 = appID2;
 				ContextID = contextID;
 				ClassID = classID;
 				Amount = amount;
 				RealAppID = realAppID;
+				RealAppID2 = realAppID2;
 				Type = type;
 			}
 
