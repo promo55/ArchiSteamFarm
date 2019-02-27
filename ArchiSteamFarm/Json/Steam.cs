@@ -464,8 +464,8 @@ namespace ArchiSteamFarm.Json {
 					return false;
 				}
 
-				return ItemsToGive.All(item => (item.AppID == Asset.SteamAppID) && (item.ContextID == Asset.SteamCommunityContextID) && acceptedTypes.Contains(item.Type));
-					ItemsToGive.All(item => (item.AppID == Asset.SteamAppID2) && (item.ContextID == Asset.SteamCommunityContextID) && acceptedTypes.Contains(item.Type));
+				return ItemsToGive.All(item => (item.AppID == Asset.SteamAppID) && (item.AppID == Asset.SteamAppID2) && (item.ContextID == Asset.SteamCommunityContextID) && acceptedTypes.Contains(item.Type));
+					
 			}
 
 			[SuppressMessage("ReSharper", "UnusedMember.Global")]
