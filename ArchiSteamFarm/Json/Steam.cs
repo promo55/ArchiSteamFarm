@@ -32,21 +32,20 @@ namespace ArchiSteamFarm.Json {
 	internal static class Steam {
 		// REF: https://developer.valvesoftware.com/wiki/Steam_Web_API/IEconService#CEcon_Asset
 		internal sealed class Asset {
-			internal const uint SteamAppID = 440;
+			internal const uint SteamAppID = 304930;
 			internal const byte SteamCommunityContextID = 2;
-			internal const uint SteamAppID2 = 304930;
+			
 
 			internal uint Amount { get; set; }
 
 			[JsonProperty(PropertyName = "appid", Required = Required.DisallowNull)]
 			internal uint AppID { get; private set; }
-			internal uint AppID2 { get; private set; }
-
+		
 			internal ulong AssetID { get; private set; }
 			internal ulong ClassID { get; private set; }
 			internal ulong ContextID { get; private set; }
 			internal uint RealAppID { get; set; }
-			internal uint RealAppID2 { get; set; }
+			
 			internal EType Type { get; set; }
 
 			[JsonProperty(PropertyName = "amount", Required = Required.Always)]
@@ -131,18 +130,18 @@ namespace ArchiSteamFarm.Json {
 			}
 
 			// Constructed from trades being received
-			internal Asset(uint appID, uint appID2 ,ulong contextID, ulong classID, uint amount, uint realAppID, uint realAppID2, EType type = EType.Unknown) {
-				if ((appID == 0) || (appID2 == 0) || (contextID == 0) || (classID == 0) || (amount == 0) || (realAppID == 0) || (realAppID2 == 0)) {
-					throw new ArgumentNullException(nameof(classID) + " || " + nameof(contextID) + " || " + nameof(classID) + " || " + nameof(amount) + " || " + nameof(realAppID)+ " || " + nameof(realAppID2));
+			internal Asset(uint appID, ulong contextID, ulong classID, uint amount, uint realAppID,  EType type = EType.Unknown) {
+				if ((appID == 0) || (contextID == 0) || (classID == 0) || (amount == 0) || (realAppID == 0) ) {
+					throw new ArgumentNullException(nameof(classID) + " || " + nameof(contextID) + " || " + nameof(classID) + " || " + nameof(amount) + " || " + nameof(realAppID));
 				}
 
 				AppID = appID;
-				AppID2 = appID2;
+				
 				ContextID = contextID;
 				ClassID = classID;
 				Amount = amount;
 				RealAppID = realAppID;
-				RealAppID2 = realAppID2;
+			
 				Type = type;
 			}
 
@@ -322,7 +321,7 @@ namespace ArchiSteamFarm.Json {
 			internal sealed class Description {
 				[JsonProperty(PropertyName = "appid", Required = Required.Always)]
 				internal readonly uint AppID;
-			internal readonly uint AppID2;//
+			
 				
 				[JsonProperty(PropertyName = "market_hash_name", Required = Required.Always)]
 				internal readonly string MarketHashName;
@@ -469,7 +468,7 @@ namespace ArchiSteamFarm.Json {
 					return false;
 				}
 
-				return ItemsToGive.All(item => (item.AppID == Asset.SteamAppID) && (item.AppID == Asset.SteamAppID2) && (item.ContextID == Asset.SteamCommunityContextID) && acceptedTypes.Contains(item.Type));
+				return ItemsToGive.All(item => (item.AppID == Asset.SteamAppID)  && (item.ContextID == Asset.SteamCommunityContextID) && acceptedTypes.Contains(item.Type));
 					
 			}
 
